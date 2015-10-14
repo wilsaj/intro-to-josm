@@ -1,10 +1,9 @@
-# Introduction to OpenStreetMap
+# Introduction to Editing OpenStreetMap with JOSM
 
-Presentation on OpenStreetMap for the [Open
-Institute](http://moody.utexas.edu/tipi/open-institute) at UT Austin.
+Slides for Introduction to editing OpenStreetMap with [JOSM](https://www.youtube.com/watch?v=3Gpb3l0-9uc&t=52)
 
 
-Slides available at: [https://github.com/wilsaj/osm-talk-open-institute](https://github.com/wilsaj/osm-talk-open-institute)
+Slides available at: [https://wilsaj.github.com/intro-to-josm](https://wilsaj.github.com/intro-to-josm)
 
 
 Based on the [spectacle](https://github.com/FormidableLabs/spectacle)
