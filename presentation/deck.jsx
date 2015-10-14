@@ -69,6 +69,9 @@ export default class extends React.Component {
           <Heading size={2} fill caps textColor="quaternary">
             install JOSM https://josm.openstreetmap.de/
           </Heading>
+          <Heading size={2} caps fill textColor="tertiary">
+            slides at bit.ly/1X4QSa1
+          </Heading>
         </Slide>
 
         <Slide
