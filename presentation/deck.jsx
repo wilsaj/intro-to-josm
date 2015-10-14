@@ -17,7 +17,7 @@ const images = {
   kat: require("./kat.png"),
   logo: require("./formidable-logo.svg"),
   osmWorld: require("./osm-whole-world.png"),
-  tangramsIkeda: require("./tangrams-ikeda.png"),
+  tangramMatrix: require("./tangram-matrix.png"),
 
   hotLogo: require("./hot-osm-logo.png"),
   IDPCamps: require("./ny-times-kathmandu-camps.png"),
@@ -30,8 +30,20 @@ const images = {
   //https://www.flickr.com/photos/isohedral/14675824683/
   espressoPour: require("./moon-shot-espresso-cup-14675824683_c17e10c8a2_k.jpg"),
 
+
+  drinkingFountain: require("./atx-drinking-fountain.png"),
+  toilets: require("./atx-toilets.png"),
+  bikeShop: require("./atx-fast-folks.png"),
+  hotel: require("./atx-hilton-garden-inn.png"),
+  creek: require("./atx-waller-creek.png"),
+
+
   //https://www.flickr.com/photos/biblarte/9963929406/in/photolist-gbtK5j-cvXbGE-hghPwY-gbu4kV-67UZCU-6RYpHp-fEAYXj-os4AMh-bNtVQ-55AERH-3bxdXe-n71Tt2-7ziHrZ-o5erp3-fUApRE-bm1Y1H-9916kg-hUnRYZ-5CSMrX-hSwQbK-apAQwp-4Q8dXu-63obju-gbzS6G-gbAcQP-63iUS4-37sjB-51ffP-aBgQeQ-7NqwRf-fDZWw5-nFvACJ-4rt2p8-nHjfEd-nHju1d-nHjinN-qGRGFt-nr4PAh-nGByxE-nHKHpL-nr4JBu-nKNa1F-nGNZZH-pWgN8p-nGwaar-nKMUKB-nGNNYz-nK8JZk-nqdEDN-nqRYxu
   pracaDoComercio: require("./praca-do-comercio-9963929406_4ba50c00e3_o.jpg"),
+
+  iDEditor: require("./id-screenshot.png"),
+  JOSMEditor: require("./josm-screenshot.png"),
+
 };
 
 const huge = {
@@ -46,20 +58,41 @@ export default class extends React.Component {
       <Deck transition={["fade"]} transitionDuration={300} progress="bar">
         <Slide
           bgColor="primary"
-          notes="Hi everyone. I'm Andy. Thanks for having me, I'm really excited to be here to talk about OpenStreetMap. I'm not directly associated with the project, I just think it's really cool and relevant to the themes of the this institute. I'm just curious: Who has heard of OSM? Used OSM? Edited OSM? Hopefully by the end of today, then everyone will editing the map."
+          notes="Hi everyone. As you already know, we'll be talking about editing OpenStreetMap (OSM) with the JOSM editor. Audience participation time: Who here has heard of OSM? Used OSM? Edited OSM with iD? With JOSM?"
         >
-          <Heading size={1} fit caps textColor="secondary">
-            OpenStreetMap!
+          <Heading size={2} fit caps textColor="secondary">
+            While we're waiting...
+          </Heading>
+          <Heading size={2} fill caps textColor="tertiary">
+            sign up for an account https://www.openstreetmap.org
+          </Heading>
+          <Heading size={2} fill caps textColor="quaternary">
+            install JOSM https://josm.openstreetmap.de/
+          </Heading>
+        </Slide>
+
+        <Slide
+          bgColor="primary"
+          notes="Hi everyone. As you already know, we'll be talking about editing OpenStreetMap (OSM) with the JOSM editor. Feel free to stop me anytime and ask questions or discuss. Actually, I'll start with some questions: Who here has heard of OSM? Used OSM? Edited OSM with iD? With JOSM?"
+        >
+          <Heading size={2} fit caps textColor="secondary">
+            Introduction to
+          </Heading>
+          <Heading size={2} fit caps textColor="secondary">
+            Editing OpenStreetMap
+          </Heading>
+          <Heading size={2} fit caps textColor="quaternary">
+            with JOSM
           </Heading>
         </Slide>
 
         <Slide bgImage={images.osmWorld.replace("/", "")} bgDarken={0}
-          notes="Cool. Let's start off talking about what OpenStreetMap is..."
+          notes="Cool. I'll start off by briefly talking about what OpenStreetMap is, so we know why we'd even want to edit it..."
         >
         </Slide>
 
         <Slide transitionDuration={1000} bgColor="primary" bgImage={images.osmWorld.replace("/", "")} bgDarken={0.75}
-          notes="A good analogy is that OpenStreetMap is [click] a Wikipedia of maps. [click] It is a map of the planet, global in scope. Every place on earth can be put into OpenStreetmap. We'll come back to this a little bit later, but this is a big deal especially in developing countries where high quality digital maps don't yet exist - OpenStreetMap is a low-cost vehicle to creating those maps.[click] It is a a crowd-sourced, democratized map, anybody in the world can freely edit it. If you see errors in the map, you can fix them. Like we were talking about the favelas. If your your street or town, or village is missing, you can literally put yourself on the map. You don't need permission from any company or government. That's a very powerful thing. [click] And there aren't many restrictions on what you you can do with it. [click]"
+          notes="A good analogy is that OpenStreetMap is [click] a Wikipedia of maps. [click] It is a map of the planet, global in scope. Every place on earth can be put into OpenStreetmap.[click] It is a a crowd-sourced, democratized map, anybody can freely edit it. [click] And there aren't very many restrictions on what you you can do with the map data. [click]"
         >
           <Heading size={1} bold fit caps textColor="primary">
             OpenStreetMap is
@@ -80,7 +113,7 @@ export default class extends React.Component {
         </Slide>
 
         <Slide
-           notes="OpenStreetMap data are licensed under the Open Database License, a license that from opendatacommons. There's a full legal document behind it, but the short version is that you can do whatever you want with it as long as you attribute OpenStreetMap as the source of the data and you make sure that if you make any changes to the data that you also make those changes available."
+           notes="OpenStreetMap data are licensed under the Open Database License. There's a full legal document behind it, but the short version is that you can do whatever you want with it as long as you attribute OpenStreetMap as the source of the data and you make sure that if you make any changes to the data that you also make those changes available."
          >
           <Heading size={1} caps fit>
             <Link textColor="secondary" href="http://opendatacommons.org/licenses/odbl/">Open Database License</Link>
@@ -95,7 +128,7 @@ export default class extends React.Component {
         </Slide>
 
         <Slide
-           notes="So this is kind of huge. It allows people to take OpenStreetMap data and do some really cool things with it."
+           notes="This last part allows people to take OpenStreetMap data and do some really cool things with it."
          >
           <Heading size={2} caps fit>
             enables cool things
@@ -104,7 +137,7 @@ export default class extends React.Component {
 
 
         <Slide full bgColor="primary" margin="0px" width="100%" height="100%"
-           notes="So here is an example of what OpenStreetMap looks like. This is Austin."
+           notes="Here is an example of what OpenStreetMap looks like. This is Austin."
          >
           <LeafletMap
             view='austin'
@@ -113,54 +146,23 @@ export default class extends React.Component {
           />
         </Slide>
 
-        <Slide full bgColor="primary" margin="0px" width="100%" height="100%"
-           notes="This is Portugal. I've heard it's a cool place. And it is pretty-well mapped."
-         >
+        <Slide bgColor="primary"
+           notes="This is the same OSM data, but rendered with a map style that was made by Stamen and CartoDB that is designed to be a good a base-layer for visualizing other data on top of. It provides some geographic context without being too intrusive."
+        >
           <LeafletMap
-            view='portugal'
-            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-        </Slide>
-
-        <Slide bgColor="primary" margin="0px" width="100%" height="100%"
-           notes="Zooming in for some more detail. This is Lisbon (Lisboa?), Portugal. Anybody from here?"
-         >
-          <LeafletMap
-            view='lisboa'
-            url='http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            view='austin'
+            url='http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
+            attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
           />
         </Slide>
 
         <Slide bgColor="primary"
-           notes="This is the same map of Lisbon, but stylized a in just black and white. This was made by a Stamen Design, a design firm in San Francisco that does a lot of cool mapping and data visualization work."
+           notes="Again, another view of Austin but stylized as a super cool space ship."
         >
           <LeafletMap
-            view='lisboa'
-            url='http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png'
-            attribution='&copy; Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
-          />
-        </Slide>
-
-        <Slide bgColor="primary"
-           notes="Again, another view of Lisbon but stylized as a space ship - kind of death star looking."
-        >
-          <LeafletMap
-            view='lisboa'
+            view='austin'
             url='http://{s}.tiles.mapbox.com/v3/examples.3hqcl3di/{z}/{x}/{y}.png'
             attribution='&copy; Map data © OpenStreetMap contributors'
-          />
-        </Slide>
-
-
-        <Slide bgColor="primary" margin="0px" width="100%" height="100%"
-           notes="This is Porto, Portgual in OpenStreetMap. Anybody from here?"
-        >
-          <LeafletMap
-            view='porto'
-            url='http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
         </Slide>
 
@@ -168,75 +170,45 @@ export default class extends React.Component {
            notes="Same map, but stylized as if it was painted with water-colors. This was also produced by Stamen Design and it is all done digitally using some cool rendering effects, from OpenStreetMap data."
         >
           <LeafletMap
-            view='porto'
+            view='austin'
             url='http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png'
             attribution='&copy; Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
           />
         </Slide>
 
-        <Slide bgColor="primary"
-           notes="This is a map that was made by Stamen and CartoDB that is designed to be a good a base-layer for visualizing other data on top of. You can take data and give it some color and put it on top of this base layer and the data that is being visualized will be promenant but this base-layer provides enough geographic context to know what you're looking at."
-        >
-          <LeafletMap
-            view='porto'
-            url='http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
-            attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-          />
-        </Slide>
 
         <Slide bgColor="primary"
-          bgImage={images.tangramsIkeda.replace('/','')}
-           notes="There is a neat project called Tangrams is that is being developed Patricio Gonzalez Vivo - he works for a company called mapzen and he's doing some very awesome things with dynamic maps. This one is in the style of an artist named (pron. ryoghee-keydah) Ryoji Ikeda. I need to click on this link to really show it... "
+          bgImage={images.tangramMatrix.replace('/','')}
+           notes="There is a neat project called Tangram is that is being developed by Patricio Gonzalez Vivo - he works for a company called mapzen and he's doing some very awesome things with dynamic maps. This one is in the style of an artist named (pron. ryoghee-keydah) Ryoji Ikeda. I need to click on this link to really show it... "
         >
-          <Link href="http://tangrams.github.io/tangram-sandbox/tangram.html?styles/ikeda#14.38604/38.7150/-9.1386">
+          <Link href="https://tangrams.github.io/tangram-sandbox/tangram.html?styles/matrix.yaml#16.25437/30.26832/-97.74343">
             <Heading size={1} caps fit textColor="primary">
-                tangrams
+                tangram
             </Heading>
           </Link>
         </Slide>
 
         <Slide
           bgColor="quaternary"
-           notes="So those are fun, but I want to take a second to point out that because these all use the same underlying data, edits to OSM will show up on every one of these maps. I also wanted to show these things off, because at first glance if you directly visit the openstreetmap project, it appears kind of utilitarian. But that's because the openstreetmap.org site focuses on just the data - but there are lots of people doing very beautiful things with OpenStreetMap outside of the project itself."
+           notes="So those are fun, but I want to take a second to point out that because these all use the same underlying data, edits to OSM will show up on every one of these maps. I also wanted to show these things off because the editing interfaces tend to be very data-focused and utilitarian. But there are lots of people taking this data and building very beautiful things with OSM data."
          >
           <Heading textColor="secondary" size={1} caps fit>
             edits to openstreetmap
           </Heading>
-          <Heading size={3} caps fit textColor="primary">
+          <Heading size={2} caps fit textColor="primary">
             are edits to all of these maps
           </Heading>
         </Slide>
 
 
         <Slide bgColor="primary"
-          notes="Switching gears a little bit, I want to take a second to talk about an affiliated group called the Humanitarian OpenStreetMap Team..."
+          notes="I also want to take a second to talk about this affiliated group called the Humanitarian OpenStreetMap Team (or HOT OSM). HOT OSM interfaces between OpenStreetMappers around the world and established humanitarian institutions like the Red Cross, Doctors without Borders, and the United Nations."
         >
           <Image src={images.hotLogo.replace('/','')} margin="0px" width="100%" height="100%"/>
         </Slide>
 
-
-        <Slide transition={["slide"]} bgColor="secondary"
-          notes="In their own words... (read thing). HOT OSM interfaces between OpenStreetMappers around the world and established humanitarian institutions like the Red Cross, Doctors without Borders, and the United Nations."
-        >
-          <BlockQuote>
-            <Quote>The Humanitarian OpenStreetMap Team [HOT] applies the principles of open source and open data sharing for humanitarian response and economic development.</Quote>
-            <Cite>hotosm.org</Cite>
-          </BlockQuote>
-        </Slide>
-
-        <Slide bgColor="primary" bgFill={true} bgImage={images.missingMapsProcess.replace('/','')}
-          notes="What does that look like? . Step 1: Remote volunteers fill in the map by tracing high resolution imagery that has been donated by companies and governments. Step 2: Details get filled in by people on the ground and then step 3 is that humanitarian organizations can use the maps to do their work. This is from the missing maps project, which is focused on non-crisis mapping. From what I understand, this is more or less how things work when mapping for crisis situations like natural disasters, but under a more compressed timeline."
-        >
-        </Slide>
-
-        <Slide bgColor="black"
-          notes="This works pretty well. This is a visualization that was produced by Mapbox showing the first three days of OpenStreetMap edits in Nepal. The initial focus after a disaster is to map road networks and because connectivity is incredibly important for the response and usually easy to do by tracing imagery."
-        >
-          <Image src={images.nepalFirstThreeDays.replace('/','')} margin="0px" width="100%" height="100%"/>
-        </Slide>
-
         <Slide bgColor="primary" bgFill={true} bgImage={images.taskManager.replace('/','')}
-          notes="This is the task manager. It is a tool developed by HOT to coordinate these large-scale remote mapping efforts. Tasks are determined by the needs of Humanitarian organizations and focus on a specific area and mapping need. Tiles get generated and volunteer mappers around the world can log into the task manager, choose a tile and begin working. Choosing a tile lets other mappers know that you are working on it, so it divides up the work fairly efficiently. The task we are looking at was from the Nepal response. It is focused on the region just east of Kathmandu. On the left, there is a place for instructions and links to updated satellite imagery taken just after the earthquake, and asks that people map destroyed buildings and encampments where people are living (because buildings were destroyed or unlivable)."
+          notes="This is an example of what that looks like. This is the task manager, a tool developed by HOT to coordinate these large-scale remote mapping efforts. Tasks are determined by the needs of Humanitarian organizations and focus on a specific area and mapping need. Tiles get generated and volunteer mappers around the world can log into the task manager, choose a tile and begin working. Choosing a tile lets other mappers know that you are working on it, so it divides up the work fairly efficiently. The task we are looking at was from the Nepal response. It is focused on the region just east of Kathmandu. On the left, there is a place for instructions and links to updated satellite imagery taken just after the earthquake, and asks that people map destroyed buildings and encampments where people are living (because buildings were destroyed or unlivable)."
         >
         </Slide>
 
@@ -247,7 +219,7 @@ export default class extends React.Component {
 
 
         <Slide bgImage={images.nepalRescueMap.replace("/", "")} bgDarken={0.75}
-          notes="This is literally saving lives with data. It means that relief workers can have good quality maps of a situation within hours of a disaster and can make know where help is needed and how to get there. And thousands of people half-way across the planet can directly contribute to that relief effort. That's a really powerful connection. This is also a work in progress - there are a lot of pieces of this still being built and the kinks are being worked out and streamlined. That work is happening right now and I don't doubt that OpenStreetMap will only become more important for humanitarian work in the future."
+          notes="This is a powerful thing. HOT OSM brings people from around the world together to help each other out."
         >
           <Heading size={1} caps fit textColor="tertiary">
             saving lives
@@ -259,21 +231,56 @@ export default class extends React.Component {
 
 
         <Slide bgColor="quinary"
-          notes="So all of that was to explain why I think OpenStreetMap is so cool and worth spending some time with. So hopefully some of you are wondering how to get involved. The easiest way to start is to learn how to edit OpenStreetMap and that's what we'll talk about for the rest of this workshop."
+          notes="So all of that was to explain why I think it's worth taking some time to learn and participate in OpenStreetMap. So now we'll get to editing OpenStreetMap."
         >
-          <Heading size={1} fit caps textColor="tertiary">
+          <Heading size={1} fit caps textColor="secondary">
             sounds great!
           </Heading>
-          <Heading size={2} fit caps textColor="secondary">
+          <Heading size={2} fit caps textColor="primary">
             Where do we start?
           </Heading>
         </Slide>
 
+        <Slide bgColor="primary"
+          notes="So how do we edit OpenStreetMap? There are currently two main editing interfaces for OSM: iD and JOSM. There a few others as well, but these are the popular choices. They are very different, and I've personally come to really like both. They each have their strengths."
+        >
+          <Heading size={1} fit caps textColor="secondary">
+            editors for OpenStreetMap
+          </Heading>
+          <Heading size={1} caps fill textColor="quaternary">iD</Heading>
+          <Heading size={1} caps fill textColor="quaternary">JOSM</Heading>
+        </Slide>
+
+
+        <Slide transitionDuration={1000} bgColor="primary" bgImage={images.iDEditor.replace("/", "")} bgDarken={0.60}
+          notes="At the heart of iD is simplicity. It is great for quick edits - it works from a web browser so there is nothing to install. It also abstracts away some of the underlying complexities of OpenStreetMap data."
+        >
+          <Heading size={1} bold fit caps textColor="primary">
+            iD editor
+          </Heading>
+          <Heading size={2} caps fill textColor="quinary">simple</Heading>
+          <Heading size={2} caps fill textColor="quinary">browser-based</Heading>
+          <Heading size={2} caps fill textColor="quinary">streamlined interface</Heading>
+        </Slide>
+
+        <Slide transitionDuration={1000} bgColor="primary" bgImage={images.JOSMEditor.replace("/", "")} bgDarken={0.60}
+          notes="JOSM is the more advanced editor. It is a desktop client so it has more computing resources. It also exposes the raw OSM data model more directly, so the interface is not quite as beautiful or simple but this means it can do more powerful things, like editing multiple features at once or easily adjusting the background imagery."
+        >
+          <Heading size={1} bold fit caps textColor="primary">
+            JOSM editor
+          </Heading>
+          <Heading size={2} caps fill textColor="quinary">advanced</Heading>
+          <Heading size={2} caps fill textColor="quinary">desktop client</Heading>
+          <Heading size={2} caps fill textColor="quinary">customizable</Heading>
+          <Heading size={2} caps fill textColor="quinary">direct interface to data</Heading>
+        </Slide>
+
+
         <Slide bgColor="secondary" bgImage={images.espressoPour.replace("/", "")} bgDarken={0.75}
-          notes="Let's begin by talking about how OpenStreetMap actually represents the world. I'll try not to get too far in the weeds, but it can help to be familiar with some of the terms and core concepts of OpenStreetMap. I'll talk more about each of these and then we'll dive into the map and look at some real-world examples. The four basic elements of OpenStreetMap are [click]..."
+          notes="So if we're going to edit OpenStreetMap, we need to know a bit about how OpenStreetMap describes things that exist in the world. These are the types of objects we'll be working with when we edit OpenStreetMap. The four basic elements of OpenStreetMap are [click]..."
         >
           <Heading size={1} fit caps textColor="primary">
-            How does it work?
+            OpenStreetMap data
           </Heading>
           <Appear>
             <Layout>
@@ -394,59 +401,65 @@ export default class extends React.Component {
           </Appear>
         </Slide>
 
-
-        <Slide bgColor="secondary" bgImage={images.pracaDoComercio.replace("/", "")} bgDarken={0.55}
-          notes="So let's look at a some real-world examples. I tried to pick a place that would be familiar and recognizable. This is (how do you say that?). I'm sure most of you already know about it, but there used to be a palace here where the Kings lived. But in the mid-18th century, there was an earthquake and tsunami that destroyed the palace and much of the city. Instead of rebuilding the palace here, they left it open and I guess they felt bad for the King at the time, so they made a statue of him on a horse and put that right in the middle. I'm going to click on this link and we take look a few things around this area."
+        <Slide bgColor="secondary"
+          notes="Let's look at a some real-world examples of how these fit together."
         >
-          <Link href="https://www.openstreetmap.org/way/96896573">
-            <Heading size={1} caps fit textColor="primary">
-                Praça Do Comercio
-            </Heading>
-          </Link>
+          <Heading size={1} caps fit textColor="primary">
+            Let's see some examples
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="secondary"
+          notes="This is a node that represents a drinking fountain. The key-value tag that describes a drinking fountain in osm is amenity=drinking_water"
+        >
+          <Image src={images.drinkingFountain.replace("/", "")} margin="0px" width="100%" height="100%"/>
+        </Slide>
+
+        <Slide bgColor="secondary"
+          notes="This is a node that represents a bathroom."
+        >
+          <Image src={images.toilets.replace("/", "")} margin="0px" width="100%" height="100%"/>
+        </Slide>
+
+        <Slide bgColor="secondary"
+          notes="This is bike shop. Also a node, and it has a few tags to describe other information like opening hours."
+        >
+          <Image src={images.bikeShop.replace("/", "")} margin="0px" width="100%" height="100%"/>
+        </Slide>
+
+        <Slide bgColor="secondary"
+          notes="This is a hotel downtown. This is a little different because it is represented as a way instead of just a node like the bike shop was. Both are valid in OSM. Another common thing in OSM is buildings with separate nodes on top of them to contain business information - this is slightly preferred because it can represent multiple businesses within a single building."
+        >
+          <Image src={images.hotel.replace("/", "")} margin="0px" width="100%" height="100%"/>
+        </Slide>
+
+        <Slide bgColor="secondary"
+          notes="This a section of waller creek downtown, also represented as a way, but it is not closed like the building was. Like a line in traditional GIS."
+        >
+          <Image src={images.creek.replace("/", "")} margin="0px" width="100%" height="100%"/>
         </Slide>
 
         <Slide bgColor="primary"
-          notes="So that's what the map looks like. How do we make edits to it? [click] First, go to openstreetmap.org [click] sign up for a new account [click] and start mapping. I should note that there are two main ways that people edit OpenStreetMap. There is the interface that we just saw, and I'll be using that because it is easier to get started with. It is called the iD editor. There is also a popular desktop editing client called JOSM, but it requires an install and has a steeper learning curve. If you get really into OSM it is worth investing some time in, but we'll be just working with the iD editor. So I'll demo that now..."
+          notes="So that's what the OpenStreetMap looks like from the inside. Now comes the hands on workshop part. Let's open up our JOSMs and get cracking. We'll mainly follow mapbox's mapping with JOSM page - it is a great starting point and reference. There is also the learnosm.org 'Getting Started with JOSM' tutorial if you want to look at something more thorough. And finally I added a link the OSM wiki is the primary source of institutional OSM knowledge. Learning to navigate the wiki is a big part of learning OSM since it is the best resource for finding out things like 'which tag should I use for X?'"
         >
           <Heading size={1} fit caps textColor="secondary">
-            How to Edit
-          </Heading>
-          <Appear>
-            <Link href="https://openstreetmap.org">
-              <Heading size={3} caps fill textColor="tertiary">
-                go to openstreetmap.org
-              </Heading>
-            </Link>
-          </Appear>
-          <Appear>
-            <Link href="https://openstreetmap.org">
-              <Heading size={3} caps fill textColor="quaternary">
-                sign up for a new account
-              </Heading>
-            </Link>
-          </Appear>
-          <Appear>
-            <Link href="https://openstreetmap.org">
-              <Heading size={3} caps fill textColor="quinary">
-                start mapping (demo!)
-              </Heading>
-            </Link>
-          </Appear>
-        </Slide>
-
-
-        <Slide bgColor="primary"
-          notes="Also want to point out a few resources that are good for starting out. LearnOSM is a website dedicated to teaching people how to map and use OSM data. It's got some really good guides and tutorials. The OSM wiki is the source of OSM truth. It can be a little bit unweildy, and takes a little bit of getting used to, but is the best resource for finding out things like 'which tag should I use for X?'. And finally, mapbox is a really cool company that does a lot with OpenStreetMap and they put together another good set of documentation that gets into some of the more advanced stuff like using the JOSM editor"
-        >
-          <Heading size={3} fit caps textColor="secondary">
-            some good resources
+            Workshop Time
           </Heading>
           <Appear>
             <Layout>
               <Fill>
-                <Link href="http://learnosm.org/en/beginner/">
+                <Link href="https://github.com/mapbox/mapping/wiki/Mapping%20with%20JOSM">
                   <Heading size={5} caps margin={10} textColor="quinary" textAlign="left">
-                    http://learnosm.org/en/beginner/
+                   github.com/mapbox/mapping/wiki/Mapping%20with%20JOSM 
+                  </Heading>
+                </Link>
+              </Fill>
+            </Layout>
+            <Layout>
+              <Fill>
+                <Link href="http://learnosm.org/en/josm/start-josm/">
+                  <Heading size={5} caps margin={10} textColor="quinary" textAlign="left">
+                    learnosm.org/en/josm/start-josm/
                   </Heading>
                 </Link>
               </Fill>
@@ -455,16 +468,7 @@ export default class extends React.Component {
               <Fill>
                 <Link href="http://wiki.openstreetmap.org/wiki/Map_Features">
                   <Heading size={5} caps margin={10} textColor="quinary" textAlign="left">
-                    http://wiki.openstreetmap.org
-                  </Heading>
-                </Link>
-              </Fill>
-            </Layout>
-            <Layout>
-              <Fill>
-                <Link href="https://github.com/mapbox/mapping/wiki">
-                  <Heading size={5} caps margin={10} textColor="quinary" textAlign="left">
-                    https://github.com/mapbox/mapping/wiki
+                    wiki.openstreetmap.org
                   </Heading>
                 </Link>
               </Fill>
@@ -472,18 +476,12 @@ export default class extends React.Component {
           </Appear>
         </Slide>
 
-
         <Slide bgColor="quaternary"
-          notes="Thank you very much for listening! I hope this was helpful. I can hang out for a while if anybody wants to talk about OpenStreetMap or do some mapping. This is a final cool OpenStreetMap thing to show. It's called show me the way [click link]"
+          notes="Thank you very much for listening! I hope this was helpful."
         >
           <Heading size={1} fit caps textColor="primary">
-            Thanks for listening!
+            Thanks!
           </Heading>
-          <Link href="http://osmlab.github.io/show-me-the-way/">
-            <Heading size={3} caps fit textColor="tertiary">
-              let's map
-            </Heading>
-          </Link>
         </Slide>
       </Deck>
     );
